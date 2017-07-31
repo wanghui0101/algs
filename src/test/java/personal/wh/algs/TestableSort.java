@@ -4,43 +4,64 @@ import org.junit.Test;
 
 import personal.wh.algs.sort.BubbleSort;
 import personal.wh.algs.sort.InsertionSort;
+import personal.wh.algs.sort.MergeSort;
+import personal.wh.algs.sort.MergeSort2;
 import personal.wh.algs.sort.SelectionSort;
 import personal.wh.algs.sort.ShellSort;
 import personal.wh.algs.sort.Sort;
-import personal.wh.algs.sort.util.Utils;
 
-public class TestableSort {
+public class TestableSort extends TestSupport {
 
     @Test
     public void testSelectionSort() {
-        Integer[] arr = Utils.generateRandomArray(1000, 0, 50);
-        Sort sort = new SelectionSort();
-        doTest(sort, arr);
-        Utils.isSorted(arr);
+        Integer[] arr = generateRandomArray(10000, 0, 50);
+        doTest(new SelectionSort(), arr);
+        assertSorted(arr);
     }
     
     @Test
     public void testBubbleSort() {
-        Integer[] arr = Utils.generateRandomArray(1000, 0, 50);
-        Sort sort = new BubbleSort();
-        doTest(sort, arr);
-        Utils.isSorted(arr);
+        Integer[] arr = generateRandomArray(1000, 0, 50);
+        doTest(new BubbleSort(), arr);
+        assertSorted(arr);
     }
     
     @Test
     public void testInsertionSort() {
-        Integer[] arr = Utils.generateRandomArray(1000, 0, 1000);
-        Sort sort = new InsertionSort();
-        doTest(sort, arr);
-        Utils.isSorted(arr);
+        Integer[] arr = generateRandomArray(1000, 0, 1000);
+        doTest(new InsertionSort(), arr);
+        assertSorted(arr);
     }
     
     @Test
     public void testShellSort() {
-        Integer[] arr = Utils.generateRandomArray(1000, 0, 1000);
-        Sort sort = new ShellSort();
-        doTest(sort, arr);
-        Utils.isSorted(arr);
+        Integer[] arr = generateRandomArray(1000, 0, 1000);
+        doTest(new ShellSort(), arr);
+        assertSorted(arr);
+    }
+    
+    @Test
+    public void testMergeSort() {
+        Integer[] arr = generateRandomArray(1000000, 0, 1000);
+        doTest(new MergeSort(), arr);
+        assertSorted(arr);
+    }
+    
+    @Test
+    public void testMergeSort2() {
+        Integer[] arr = generateRandomArray(1000000, 0, 1000);
+        doTest(new MergeSort2(), arr);
+        assertSorted(arr);
+    }
+    
+    @Test
+    public void testAllMergeSort() {
+        Integer[] arr = generateRandomArray(1000000, 0, 1000);
+        Integer[] arr2 = arr.clone();
+        doTest(new MergeSort(), arr);
+        assertSorted(arr);
+        doTest(new MergeSort2(), arr2);
+        assertSorted(arr2);
     }
     
     private <T extends Comparable<T>> void doTest(Sort sort, T[] arr) {

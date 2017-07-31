@@ -1,6 +1,6 @@
 package personal.wh.algs.sort;
 
-public class QuickSort implements Sort {
+public final class QuickSort implements Sort {
 
     @Override
     public String getName() {
