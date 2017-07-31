@@ -6,11 +6,12 @@ import personal.wh.algs.sort.BubbleSort;
 import personal.wh.algs.sort.InsertionSort;
 import personal.wh.algs.sort.MergeSort;
 import personal.wh.algs.sort.MergeSort2;
+import personal.wh.algs.sort.QuickSort;
 import personal.wh.algs.sort.SelectionSort;
 import personal.wh.algs.sort.ShellSort;
 import personal.wh.algs.sort.Sort;
 
-public class TestableSort extends TestSupport {
+public class TestSort extends TestSupport {
 
     @Test
     public void testSelectionSort() {
@@ -62,6 +63,13 @@ public class TestableSort extends TestSupport {
         assertSorted(arr);
         doTest(new MergeSort2(), arr2);
         assertSorted(arr2);
+    }
+    
+    @Test
+    public void testQuickSort() {
+        Integer[] arr = generateRandomArray(1000000, 0, 1000000);
+        doTest(new QuickSort(), arr);
+        assertSorted(arr);
     }
     
     private <T extends Comparable<T>> void doTest(Sort sort, T[] arr) {
