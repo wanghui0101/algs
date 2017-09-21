@@ -3,6 +3,7 @@ package personal.wh.algs;
 import org.junit.Test;
 
 import personal.wh.algs.sort.BubbleSort;
+import personal.wh.algs.sort.HeapSort;
 import personal.wh.algs.sort.InsertionSort;
 import personal.wh.algs.sort.MergeSort;
 import personal.wh.algs.sort.MergeSort2;
@@ -56,20 +57,36 @@ public class TestSort extends TestSupport {
     }
     
     @Test
-    public void testAllMergeSort() {
-        Integer[] arr = generateRandomArray(1000000, 0, 1000);
-        Integer[] arr2 = arr.clone();
-        doTest(new MergeSort(), arr);
-        assertSorted(arr);
-        doTest(new MergeSort2(), arr2);
-        assertSorted(arr2);
-    }
-    
-    @Test
     public void testQuickSort() {
         Integer[] arr = generateRandomArray(1000000, 0, 1000000);
         doTest(new QuickSort(), arr);
         assertSorted(arr);
+    }
+    
+    @Test
+    public void testHeapSort() {
+        Integer[] arr = generateRandomArray(10000, 0, 1000000);
+        doTest(new HeapSort(), arr);
+        assertSorted(arr, false);
+    }
+    
+    @Test
+    public void testAll() {
+        Integer[] arr = generateRandomArray(10000, 0, 1000000);
+        Integer[] arr2 = arr.clone();
+        Integer[] arr3 = arr.clone();
+        Integer[] arr4 = arr.clone();
+        Integer[] arr5 = arr.clone();
+        Integer[] arr6 = arr.clone();
+        Integer[] arr7 = arr.clone();
+        doTest(new SelectionSort(), arr);
+        doTest(new BubbleSort(), arr2);
+        doTest(new InsertionSort(), arr3);
+        doTest(new ShellSort(), arr4);
+        doTest(new HeapSort(), arr5);
+        doTest(new QuickSort(), arr6);
+        doTest(new MergeSort2(), arr7);
+        //assertSorted(arr, false);
     }
     
     private <T extends Comparable<T>> void doTest(Sort sort, T[] arr) {

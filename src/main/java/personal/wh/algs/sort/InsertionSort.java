@@ -26,7 +26,7 @@ public final class InsertionSort implements Sort {
     }
 
     @Override
-    public <T extends Comparable<T>> void sort(T[] arr) {
+    public <E extends Comparable<E>> void sort(E[] arr) {
         doSort(arr, 0, arr.length - 1);
     }
     

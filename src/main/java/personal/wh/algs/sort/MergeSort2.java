@@ -3,7 +3,7 @@ package personal.wh.algs.sort;
 import java.util.Arrays;
 
 /**
- * 当数据足够小的时候, 插入排序比归并排序的效率要好
+ * 优化点: 当数据足够小的时候, 插入排序比归并排序的效率要好
  * 
  * @author wh
  * @since 0.0.1
@@ -18,7 +18,7 @@ public final class MergeSort2 implements Sort {
     }
 
     @Override
-    public <T extends Comparable<T>> void sort(T[] arr) {
+    public <E extends Comparable<E>> void sort(E[] arr) {
         mergeSortRecursively(arr, 0, arr.length - 1);
     }
     

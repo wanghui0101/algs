@@ -25,7 +25,7 @@ public final class BubbleSort implements Sort {
     }
 
     @Override
-    public <T extends Comparable<T>> void sort(T[] arr) {
+    public <E extends Comparable<E>> void sort(E[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j].compareTo(arr[j + 1]) > 0) { // 相邻比较

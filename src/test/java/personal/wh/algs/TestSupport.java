@@ -34,8 +34,15 @@ public abstract class TestSupport {
     }
     
     public <T extends Comparable<T>> void assertSorted(T[] arr) {
+        assertSorted(arr, true);
+    }
+    
+    public <T extends Comparable<T>> void assertSorted(T[] arr, boolean flag) {
         for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i].compareTo(arr[i + 1]) > 0) {
+            if (flag && arr[i].compareTo(arr[i + 1]) > 0) {
+                throw new RuntimeException("没排好序");
+            } else if (arr[i].compareTo(arr[i + 1]) < 0) {
+                System.out.println(arr[i] + " - " + arr[i + 1]);
                 throw new RuntimeException("没排好序");
             }
         }

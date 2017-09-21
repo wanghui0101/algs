@@ -24,7 +24,7 @@ public final class MergeSort implements Sort {
     }
 
     @Override
-    public <T extends Comparable<T>> void sort(T[] arr) {
+    public <E extends Comparable<E>> void sort(E[] arr) {
         mergeSortRecursively(arr, 0, arr.length - 1);
     }
     

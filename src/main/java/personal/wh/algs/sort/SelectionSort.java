@@ -27,7 +27,7 @@ public final class SelectionSort implements Sort {
     }
 
     @Override
-    public <T extends Comparable<T>> void sort(T[] arr) {
+    public <E extends Comparable<E>> void sort(E[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int minIndex = i; // 每趟的最小值索引
             for (int j = i + 1; j < arr.length; j++) { // 从左向右找
